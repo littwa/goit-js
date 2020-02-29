@@ -1,11 +1,14 @@
 let input;
 let total = 0;
 
-if(Number.isNaN(Number(input = prompt('Введите число')))){alert('Было введено не число, попробуйте еще раз')}
-else{
-  do {
-	input = prompt('Введите число');
-	total += Number(input);
-} 
-while (input !== null);
-alert(`Общая сумма чисел равна ${total}`)};
+do {
+  input = prompt("Введите число!");
+  if (Number.isNaN(Number(input))) {
+    alert("Это НЕ число!");
+  }
+  if (Number.isNaN(Number(input))) {
+    continue;
+  }
+  total += Number(input);
+} while (input !== null);
+alert(`Общая сумма чисел равна ${total}`);
