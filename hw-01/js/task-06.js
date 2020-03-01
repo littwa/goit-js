@@ -5,8 +5,6 @@ do {
   input = prompt("Введите число!");
   if (Number.isNaN(Number(input))) {
     alert("Это НЕ число!");
-  }
-  if (Number.isNaN(Number(input))) {
     continue;
   }
   total += Number(input);
