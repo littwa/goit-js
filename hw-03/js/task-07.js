@@ -82,8 +82,7 @@ const account = {
    * Метод ищет и возвращает объект транзации по id
    */
   getTransactionDetails(id) {
-    for (let i = 0; i < this.transactions.length; i += 0) {
-      console.log(id);
+    for (let i = 0; i < this.transactions.length; i += 1) {
       if (this.transactions[i].id === id) {
         return this.transactions[i];
       }
@@ -94,25 +93,26 @@ const account = {
    * определенного типа транзакции из всей истории транзакций
    */
   getTransactionTotal(type) {
-    // let credir = 0;
-    // for (let i = 0; i < this.transactions.length; i += 0) {
-    //   for (let key in this.transactions[i]) {
-    //     if (this.transactions[i][key] === type) {
-    //       credir += this.transactions.amount;
-    //     }
-    //   }
-    // }
-    // return credir;
+    let credit = 0;
+    for (let i = 0; i < this.transactions.length; i += 1) {
+      for (let key in this.transactions[i]) {
+        if (this.transactions[i][key] === type) {
+          credit += this.transactions[i].amount;
+        }
+      }
+    }
+    return credit;
   }
 };
-
-// console.log(account.createTransaction(44, "DEPOSIT"));
 
 account.deposit(25);
 account.withdraw(7);
 account.deposit(11);
+account.withdraw(13);
+account.deposit(15);
 
 console.log(account.transactions);
 console.log(account.getBalance());
-console.log(account.getTransactionDetails(0));
-// console.log(account.getTransactionTotal("DEPOSIT"));
+console.log(account.getTransactionDetails(4));
+console.log(account.getTransactionTotal(Transaction.DEPOSIT));
+console.log(account.getTransactionTotal(Transaction.WITHDRAW));
