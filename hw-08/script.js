@@ -1,4 +1,4 @@
-import gal from "/gallery-items.js";
+import gal from "../gallery-items.js";
 
 let galleryUlContainer = document.querySelector("ul.gallery.js-gallery");
 let modalDiv = document.querySelector("div.lightbox.js-lightbox");
