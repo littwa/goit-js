@@ -72,6 +72,8 @@ function closeModal(event) {
  modalDiv.classList.remove("is-open");
  lightboxImage.setAttribute("src", "");
  window.removeEventListener("keydown", escKeyPress);
+ window.removeEventListener("keydown", nextKeyPress);
+ window.removeEventListener("keydown", prevKeyPress);
 }
 
 function escKeyPress(event) {
