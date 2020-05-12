@@ -1,0 +1,16 @@
+body {
+ font-family: Roboto;
+}
+.timer {
+ padding: 20px;
+ display: flex;
+ width: max-content;
+ border: 1px solid;
+}
+.field span {
+ display: block;
+ text-align: center;
+}
+.field {
+ margin-left: 15px;
+}
