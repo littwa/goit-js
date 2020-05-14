@@ -22,6 +22,8 @@ function cbColorStart() {
  id = setInterval(() => {
   const randomInteger = randomIntegerFromInterval(0, colors.length - 1);
 
+  btnStart.setAttribute("disabled", "");
+
   bodyTag.style.backgroundColor = colors[randomInteger];
  }, 1000);
 }
@@ -29,5 +31,6 @@ function cbColorStart() {
 function cbColorStop() {
  clearInterval(id);
  bodyTag.style.backgroundColor = "initial";
+ btnStart.removeAttribute("disabled");
  checkBox = false;
 }
