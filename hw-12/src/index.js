@@ -1,24 +1,9 @@
 import './styles.css';
 import fetchCountries from './fetch-countries.js';
 import countryTemplate from './country-template.hbs';
-import { error, alert, defaults, Stack } from '@pnotify/core';
-import '@pnotify/core/dist/BrightTheme.css';
-import '@pnotify/core/dist/PNotify.css';
+import { error, alert } from '@pnotify/core';
+import { myStack } from './pnotify';
 const debounce = require('lodash.debounce');
-
-defaults.width = '320px';
-defaults.sticker = false;
-defaults.maxTextHeight = 0;
-const myStack = new Stack({
-  dir1: 'left',
-  dir2: 'down',
-  firstpos1: 10,
-  firstpos2: 25,
-  spacing1: 100,
-  spacing2: 10,
-  push: 'bottom',
-  context: document.querySelector('#formserch'),
-});
 
 let resultSerchContainer = document.querySelector('.result-serch-container');
 let formSerch = document.querySelector('#formserch');
@@ -58,12 +43,21 @@ function cb(e) {
 }
 
 function serchOneToTen(arrayFromFetchCountries) {
-  let markup = arrayFromFetchCountries.reduce((ac, el) => {
-    return (ac += `<p style="margin: 0"><img src="${el.flag}" width="34px" alt="pic"> ${el.name}</p>`);
+  let markup = arrayFromFetchCountries.reduce((ac, el, idx) => {
+    return (ac += `<p style="margin: 0"><img src="${el.flag}" width="34px" alt="pic"> <a data-idx="${idx}" href="#">${el.name}</a> </p>`);
   }, '');
   resultSerchContainer.innerHTML = markup;
+  resultSerchContainer.addEventListener('click', cba);
+
+  function cba(e) {
+    serchOneX(arrayFromFetchCountries[e.target.dataset.idx]);
+  }
 }
 
 function serchOne(arrayFromFetchCountries) {
   resultSerchContainer.innerHTML = countryTemplate(...arrayFromFetchCountries);
+}
+
+function serchOneX(obj) {
+  resultSerchContainer.innerHTML = countryTemplate(obj);
 }
