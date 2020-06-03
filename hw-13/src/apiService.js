@@ -20,12 +20,12 @@ export default {
   set serchQwery(inputText) {
     this.qwery = inputText;
   },
-  perpageMore() {
-    this.perpage += 1;
-  },
-  resetPerpage() {
-    this.perpage = 12;
-  },
+  // perpageMore() {
+  //   this.perpage += 1;
+  // },
+  // resetPerpage() {
+  //   this.perpage = 12;
+  // },
   generate() {
     fetch(
       'https://pixabay.com/api/?key=' +
@@ -48,8 +48,8 @@ export default {
         data.hits.forEach(hit => {
           pixicont.insertAdjacentHTML('beforeend', imgcard(hit));
         });
-        this.perpageFlag = data.hits.length + 1;
-        this.perpageMore();
+        this.perpageFlag = data.hits.length;
+
         this.nextPage();
 
         success({

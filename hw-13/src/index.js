@@ -19,7 +19,7 @@ let opt = {
 
 function onEntr(enries, obs) {
   enries.forEach(en => {
-    if (en.isIntersecting && apiService.perpage === apiService.perpageFlag) {
+    if (en.isIntersecting && apiService.perpageFlag >= apiService.perpage) {
       obs.unobserve(pixicont.lastElementChild);
       apiService.generate();
     }
@@ -31,7 +31,7 @@ export let obs = new IntersectionObserver(onEntr, opt);
 function cbl(e) {
   e.preventDefault();
   apiService.resetPage();
-  apiService.resetPerpage();
+  // apiService.resetPerpage();
 
   let inputText = e.currentTarget.elements.query.value;
   apiService.serchQwery = inputText;
